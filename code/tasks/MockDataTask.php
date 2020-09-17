@@ -2,11 +2,9 @@
 
 namespace SilverStripe\MockDataObjects;
 
-
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataList;
 use SilverStripe\Dev\BuildTask;
-use 
 
 /**
  * Defines the task that creates, populates, or cleans up mock data.

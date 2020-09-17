@@ -2,7 +2,6 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use SilverStripe\MockDataObjects\MockDataGenerator;
 use SilverStripe\View\Requirements;
 use SilverStripe\View\ArrayData;
 use SilverStripe\Forms\TextField;

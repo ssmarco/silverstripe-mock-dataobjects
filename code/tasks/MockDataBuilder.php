@@ -16,7 +16,7 @@ use SilverStripe\Control\Director;
  * @package silverstripe-mock-data
  * @author Uncle Cheese <unclecheese@leftandmain.com>
  */
-class MockDataBuilder extends Object
+class MockDataBuilder
 {
 
 
