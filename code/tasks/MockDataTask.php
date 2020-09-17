@@ -2,11 +2,11 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use BuildTask;
-use Exception;
-use DataList;
 
-
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DataList;
+use SilverStripe\Dev\BuildTask;
+use 
 
 /**
  * Defines the task that creates, populates, or cleans up mock data.
@@ -60,7 +60,7 @@ class MockDataTask extends BuildTask
                 $args[1] = "__all__";
             }
             if ($args[1] != "__all__") {
-                if (!class_exists($args[1]) || !is_subclass_of($args[1], "DataObject")) {
+                if (!class_exists($args[1]) || !is_subclass_of($args[1], DataObject::class)) {
                     $this->showError("Please specify a valid DataObject descendant class.");
                 }
             }
@@ -73,7 +73,7 @@ class MockDataTask extends BuildTask
 
             list($operation, $className) = $args;
 
-            if (!class_exists($className) || !is_subclass_of($className, "DataObject")) {
+            if (!class_exists($className) || !is_subclass_of($className, DataObject::class)) {
                 $this->showError("Please specify a valid DataObject descendant class.");
             }
 
@@ -103,7 +103,7 @@ class MockDataTask extends BuildTask
 
         try {
             $builder = MockDataBuilder::create($className);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage();
             die();
         }
@@ -118,7 +118,7 @@ class MockDataTask extends BuildTask
 
         try {
             $builder->$cmd();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             echo $e->getMessage()."\n\n";
             die();
         }

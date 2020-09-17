@@ -2,12 +2,10 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use DataExtension;
-use Form;
-use FormAction;
-use Controller;
-
-
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Control\Controller;
+use SilverStripe\ORM\DataExtension;
 
 /**
  * Injects functionality into {@link GridField} to show a button that adds mock data to

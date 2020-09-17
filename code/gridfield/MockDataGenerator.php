@@ -2,20 +2,17 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use GridField_HTMLProvider;
-use GridField_DataManipulator;
-use GridField_ActionProvider;
-use Requirements;
-use ArrayData;
-use TextField;
-use CheckboxField;
-use GridField_FormAction;
-use GridField;
-use SS_List;
 use SilverStripe\MockDataObjects\MockDataGenerator;
-
-
-
+use SilverStripe\View\Requirements;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\GridField\GridField_FormAction;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\ORM\SS_List;
+use SilverStripe\Forms\GridField\GridField_HTMLProvider;
+use SilverStripe\Forms\GridField\GridField_DataManipulator;
+use SilverStripe\Forms\GridField\GridField_ActionProvider;
 
 /**
  * Defines the component for {@link GridField} that allows for populating the record set

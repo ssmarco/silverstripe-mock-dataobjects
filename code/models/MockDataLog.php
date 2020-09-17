@@ -2,12 +2,10 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use DataObject;
-
-
+use SilverStripe\ORM\DataObject;
 
 /**
- * Defines a database record of a mock data creation. Has references to the class 
+ * Defines a database record of a mock data creation. Has references to the class
  * of data created and its ID.
  *
  * @package silverstripe-mock-dataobjects
@@ -15,8 +13,6 @@ use DataObject;
  */
 class MockDataLog extends DataObject
 {
-
-
     private static $db = array(
         'RecordClass' => 'Varchar',
         'RecordID' => 'Int'

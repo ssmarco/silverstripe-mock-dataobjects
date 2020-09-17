@@ -2,8 +2,6 @@
 
 namespace SilverStripe\MockDataObjects;
 
-
-
 /**
  * Defines the methods that are injected into the {@link HTMLVarchar} class for
  * generating mock data
@@ -14,8 +12,8 @@ namespace SilverStripe\MockDataObjects;
 
 
 use Faker\Generator;
-use DataExtension;
 
+use SilverStripe\ORM\DataExtension;
 
 class MockHTMLVarcharField extends DataExtension
 {
@@ -23,7 +21,7 @@ class MockHTMLVarcharField extends DataExtension
 
     /**
      * Gets a random sentence
-     * 
+     *
      * @param Faker\Generator
      * @return string
      */

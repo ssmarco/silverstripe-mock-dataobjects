@@ -2,9 +2,8 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use Extension;
-
-
+use SilverStripe\Forms\GridField\GridFieldPaginator;
+use SilverStripe\Core\Extension;
 
 /**
  * Updates a {@link GridFieldConfig} object to contain functionality for adding mock data
@@ -27,8 +26,8 @@ class MockDataObjectGridFieldConfig extends Extension
      */
     public function updateConfig()
     {
-        $pagers = $this->owner->getComponentsByType("GridFieldPaginator");
-        $before = ($pagers->count()) ? "GridFieldPaginator" : null;
+        $pagers = $this->owner->getComponentsByType(GridFieldPaginator::class);
+        $before = ($pagers->count()) ? GridFieldPaginator::class : null;
         $this->owner->addComponent(new MockDataGenerator(), $before);
     }
 }

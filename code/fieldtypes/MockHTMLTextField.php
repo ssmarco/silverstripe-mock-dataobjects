@@ -2,7 +2,6 @@
 
 namespace SilverStripe\MockDataObjects;
 
-
 /**
  * Defines the methods that are injected into the {@link HTMLText} class for
  * generating mock data
@@ -13,8 +12,8 @@ namespace SilverStripe\MockDataObjects;
 
 
 use Faker\Generator;
-use DataExtension;
 
+use SilverStripe\ORM\DataExtension;
 
 class MockHTMLTextField extends DataExtension
 {

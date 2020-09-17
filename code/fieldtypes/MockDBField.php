@@ -2,8 +2,6 @@
 
 namespace SilverStripe\MockDataObjects;
 
-
-
 /**
  * Defines the methods inherited by all {@link DBField} classes to support
  * generating mock data
@@ -12,12 +10,13 @@ namespace SilverStripe\MockDataObjects;
  * @author Uncle Cheese <unclecheese@leftandmain.com>
  */
 use Faker\Generator;
-use DataExtension;
-use i18n;
-use Config;
+
+
+
 use SilverStripe\MockDataObjects\MockDBField;
-
-
+use SilverStripe\i18n\i18n;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DataExtension;
 
 class MockDBField extends DataExtension
 {

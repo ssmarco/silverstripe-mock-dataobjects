@@ -2,11 +2,9 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use DataExtension;
-use FieldList;
-use FormAction;
-
-
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\ORM\DataExtension;
 
 /**
  * Decorates the SiteTree class to add new functionality for mock data management

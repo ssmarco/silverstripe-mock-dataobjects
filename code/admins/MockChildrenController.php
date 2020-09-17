@@ -2,21 +2,23 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use CMSMain;
-use SS_HTTPRequest;
-use SiteTree;
-use FieldList;
-use OptionsetField;
-use LiteralField;
-use NumericField;
-use DropdownField;
-use HiddenField;
-use FormAction;
 use CMSForm;
+
 use Exception;
-use Controller;
 
-
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\MockDataObjects\MockDataBuilder;
+use SilverStripe\CMS\Controllers\CMSPagesController;
+use SilverStripe\Control\Controller;
+use SilverStripe\CMS\Controllers\CMSMain;
 
 /**
  * Displays a page for creating mock children in the CMS
@@ -75,7 +77,7 @@ class MockChildrenController extends CMSMain
      * @param SS_HTTPRequest
      * @return SSViewer
      */
-    public function node(SS_HTTPRequest $r)
+    public function node(HTTPRequest $r)
     {
         return $this->getResponseNegotiator()->respond($r);
     }
@@ -102,7 +104,8 @@ class MockChildrenController extends CMSMain
                 continue;
             }
 
-            $html = sprintf('<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
+            $html = sprintf(
+                '<span class="page-icon class-%s"></span><strong class="title">%s</strong><span class="description">%s</span>',
                 $type->getField('ClassName'),
                 $type->getField('AddAction'),
                 $type->getField('Description')
@@ -125,7 +128,6 @@ class MockChildrenController extends CMSMain
                 $pageTypes,
                 reset($keys)
             ),
-
             new LiteralField('optionsheader', sprintf($numericLabelTmpl, 2, _t('MockData.CHOOSEOPTIONS', 'Choose options'))),
             new NumericField('Count', _t('MockData.HOWMANYPAGES', 'How many pages do you want to create?'), 10),
             new DropdownField('IncludeRelations', _t('MockData.RELATEDDATA', 'Related data'), array(
@@ -148,7 +150,10 @@ class MockChildrenController extends CMSMain
                 
         
         $form = CMSForm::create(
-            $this, "MockChildrenForm", $fields, $actions
+            $this,
+            "MockChildrenForm",
+            $fields,
+            $actions
         )->setHTMLID('Form_MockChildrenForm');
         $form->setResponseNegotiator($this->getResponseNegotiator());
         $form->addExtraClass(' stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
@@ -191,7 +196,7 @@ class MockChildrenController extends CMSMain
             'X-Status',
             _t('MockData.CREATESUCCESS', 'Created {count} mock children under {title}', array('count' => $data['Count'], 'title' => $parentPage->Title))
         );
-        $this->redirect(Controller::join_links(singleton('CMSPagesController')->Link()));
+        $this->redirect(Controller::join_links(singleton(CMSPagesController::class)->Link()));
         
         return $this->getResponseNegotiator()->respond($this->request);
     }

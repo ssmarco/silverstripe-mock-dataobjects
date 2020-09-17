@@ -2,17 +2,12 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use Object;
-use Exception;
-use Injector;
-use DataList;
-use SiteTree;
-use DataObject;
-use Director;
 use SilverStripe\MockDataObjects\MockDataObject;
-
-
-
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\DataList;
+use SilverStripe\Control\Director;
 
 /**
  * This class creates a process that generates mock data records. It accepts an assortment
@@ -111,14 +106,14 @@ class MockDataBuilder extends Object
     public function __construct($className)
     {
         $this->subjectClass = $className;
-        if (!class_exists($className) || !is_subclass_of($className, "DataObject")) {
+        if (!class_exists($className) || !is_subclass_of($className, DataObject::class)) {
             throw new Exception("$className doesn't exist, or it is not a DataObject.");
         }
         if (!Injector::inst()->get($className)->hasExtension(MockDataObject::class)) {
             throw new Exception("$className does not have the MockDataObject extension applied.");
         }
 
-        $this->isSiteTree = is_subclass_of($className, "SiteTree");
+        $this->isSiteTree = is_subclass_of($className, SiteTree::class);
 
         return $this;
     }

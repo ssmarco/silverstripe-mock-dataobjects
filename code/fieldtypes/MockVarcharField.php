@@ -12,7 +12,9 @@ namespace SilverStripe\MockDataObjects;
  */
 
 use Faker\Generator;
-use DataExtension;
+
+use SilverStripe\ORM\DataExtension;
+
 
 
 class MockVarcharField extends DataExtension

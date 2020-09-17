@@ -2,20 +2,18 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use DataExtension;
-use File;
-use Folder;
-use Director;
-use Image;
-use DB;
-use i18n;
-use Config;
-use Injector;
-use DataList;
 use SilverStripe\MockDataObjects\MockDataObject;
-
-
-
+use SilverStripe\Assets\File;
+use SilverStripe\Assets\Folder;
+use SilverStripe\Control\Director;
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DB;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\DataExtension;
 
 /**
  * Injects functionality into every {@link DataObject} subclass to populate its
@@ -167,7 +165,7 @@ class MockDataObject extends DataExtension
         $settings = array_merge($defaults, $config);
 
         // Anything that is a core SiteTree field, e.g. "URLSegment", "ShowInMenus", "ParentID",  we don't care about.
-        $omit = Injector::inst()->get("SiteTree")->db();
+        $omit = Injector::inst()->get(SiteTree::class)->db();
         $omit = array_merge($omit, $this->owner->config()->mock_blacklist);
 
         // Except these two.
@@ -190,13 +188,13 @@ class MockDataObject extends DataExtension
 
         foreach ($this->owner->has_one() as $relation => $className) {
             $idField = $relation."ID";
-            $sitetree = ($className == "SiteTree") || (is_subclass_of($className, "SiteTree"));
+            $sitetree = ($className == SiteTree::class) || (is_subclass_of($className, SiteTree::class));
             if ($sitetree && $relation == "Parent") {
                 continue;
             }
             $create_limit = Config::inst()->get(MockDataObject::class, "relation_create_limit");
 
-            if (($className == "File") || (is_subclass_of($className, "File"))) {
+            if (($className == File::class) || (is_subclass_of($className, File::class))) {
                 if ($settings['only_empty'] && $this->owner->$relation()->exists()) {
                     continue;
                 }
@@ -230,7 +228,7 @@ class MockDataObject extends DataExtension
         $this->owner->write();
 
         if ($settings['include_relations']) {
-            $SNG = Injector::inst()->get("SiteTree");
+            $SNG = Injector::inst()->get(SiteTree::class);
             $skip = array_merge(array_keys($SNG->has_many()), array_keys($SNG->many_many()));
             foreach ($this->owner->has_many() as $relation => $className) {
                 if (in_array($relation, $skip)) {

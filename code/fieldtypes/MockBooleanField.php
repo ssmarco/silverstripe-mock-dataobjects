@@ -2,8 +2,6 @@
 
 namespace SilverStripe\MockDataObjects;
 
-
-
 /**
  * Defines the methods that are injected into the {@link Boolean} class for
  * generating mock data
@@ -12,8 +10,8 @@ namespace SilverStripe\MockDataObjects;
  * @author Uncle Cheese <unclecheese@leftandmain.com>
  */
 use Faker\Generator;
-use DataExtension;
 
+use SilverStripe\ORM\DataExtension;
 
 class MockBooleanField extends DataExtension
 {

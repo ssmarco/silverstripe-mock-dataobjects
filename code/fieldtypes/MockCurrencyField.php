@@ -2,7 +2,6 @@
 
 namespace SilverStripe\MockDataObjects;
 
-
 /**
  * Defines the methods that are injected into the {@link Currency} class for
  * generating mock data
@@ -12,8 +11,8 @@ namespace SilverStripe\MockDataObjects;
  */
 
 use Faker\Generator;
-use DataExtension;
 
+use SilverStripe\ORM\DataExtension;
 
 class MockCurrencyField extends DataExtension
 {
@@ -21,7 +20,7 @@ class MockCurrencyField extends DataExtension
 
     /**
      * Gets a random currency value
-     * 
+     *
      * @param Faker\Generator
      * @return float
      */

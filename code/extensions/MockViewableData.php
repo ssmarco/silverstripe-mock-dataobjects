@@ -2,13 +2,13 @@
 
 namespace SilverStripe\MockDataObjects;
 
-use ViewableData;
-use i18n;
-use DBField;
-use ArrayList;
-use DataObject;
-
-
+use SilverStripe\i18n\i18n;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\FieldType\DBBoolean;
+use SilverStripe\ORM\FieldType\DBDate;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\View\ViewableData;
 
 /**
  * A wrapper class for {@link Faker\Generator} that provides easy template
@@ -141,7 +141,7 @@ class MockViewableData extends ViewableData
      */
     public function Boolean($chanceOfTrue = 50)
     {
-        return DBField::create_field("Boolean", $this->getFaker()->boolean($chanceOfTrue));
+        return DBField::create_field(DBBoolean::class, $this->getFaker()->boolean($chanceOfTrue));
     }
 
 
@@ -165,7 +165,7 @@ class MockViewableData extends ViewableData
      */
     public function Date()
     {
-        return DBField::create_field("Date", $this->getFaker()->dateTimeThisYear()->format('Y-m-d'));
+        return DBField::create_field(DBDate::class, $this->getFaker()->dateTimeThisYear()->format('Y-m-d'));
     }
 
 
