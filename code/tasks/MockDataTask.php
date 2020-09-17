@@ -1,5 +1,12 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+use BuildTask;
+use Exception;
+use DataList;
+
+
 
 /**
  * Defines the task that creates, populates, or cleans up mock data.

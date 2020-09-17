@@ -1,5 +1,8 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+
 
 /**
  * Defines the methods inherited by all {@link DBField} classes to support
@@ -9,6 +12,12 @@
  * @author Uncle Cheese <unclecheese@leftandmain.com>
  */
 use Faker\Generator;
+use DataExtension;
+use i18n;
+use Config;
+use SilverStripe\MockDataObjects\MockDBField;
+
+
 
 class MockDBField extends DataExtension
 {
@@ -46,7 +55,7 @@ class MockDBField extends DataExtension
     {
         $list = false;
         $current_locale = i18n::get_locale();
-        $default_lang = Config::inst()->forClass("MockDBField")->default_lang;
+        $default_lang = Config::inst()->forClass(MockDBField::class)->default_lang;
         $default_locale = i18n::get_locale_from_lang($default_lang);
 
         i18n::set_locale($default_locale);

@@ -1,5 +1,10 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+use DataObject;
+
+
 
 /**
  * Defines a database record of a mock data creation. Has references to the class 

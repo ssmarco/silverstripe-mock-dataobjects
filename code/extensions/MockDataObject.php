@@ -1,5 +1,21 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+use DataExtension;
+use File;
+use Folder;
+use Director;
+use Image;
+use DB;
+use i18n;
+use Config;
+use Injector;
+use DataList;
+use SilverStripe\MockDataObjects\MockDataObject;
+
+
+
 
 /**
  * Injects functionality into every {@link DataObject} subclass to populate its
@@ -146,8 +162,8 @@ class MockDataObject extends DataExtension
     public function fill($config = array())
     {
         $faker = Faker\Factory::create(i18n::get_locale());
-        $defaults = Config::inst()->get("MockDataObject", "fill_options");
-        $create_limit = Config::inst()->get("MockDataObject", "relation_create_limit");
+        $defaults = Config::inst()->get(MockDataObject::class, "fill_options");
+        $create_limit = Config::inst()->get(MockDataObject::class, "relation_create_limit");
         $settings = array_merge($defaults, $config);
 
         // Anything that is a core SiteTree field, e.g. "URLSegment", "ShowInMenus", "ParentID",  we don't care about.
@@ -178,7 +194,7 @@ class MockDataObject extends DataExtension
             if ($sitetree && $relation == "Parent") {
                 continue;
             }
-            $create_limit = Config::inst()->get("MockDataObject", "relation_create_limit");
+            $create_limit = Config::inst()->get(MockDataObject::class, "relation_create_limit");
 
             if (($className == "File") || (is_subclass_of($className, "File"))) {
                 if ($settings['only_empty'] && $this->owner->$relation()->exists()) {

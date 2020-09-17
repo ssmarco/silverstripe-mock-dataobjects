@@ -1,5 +1,21 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+use GridField_HTMLProvider;
+use GridField_DataManipulator;
+use GridField_ActionProvider;
+use Requirements;
+use ArrayData;
+use TextField;
+use CheckboxField;
+use GridField_FormAction;
+use GridField;
+use SS_List;
+use SilverStripe\MockDataObjects\MockDataGenerator;
+
+
+
 
 /**
  * Defines the component for {@link GridField} that allows for populating the record set
@@ -40,7 +56,7 @@ class MockDataGenerator implements GridField_HTMLProvider, GridField_DataManipul
                     ->setAttribute('id', 'action_mockdata_' . $gridField->getModelClass());
 
         return array(
-            'before' => $forTemplate->renderWith('MockDataGenerator')
+            'before' => $forTemplate->renderWith(MockDataGenerator::class)
         );
     }
 

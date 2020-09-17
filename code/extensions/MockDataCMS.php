@@ -1,5 +1,11 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+use DataExtension;
+use SiteTree;
+
+
 
 /**
  * Injects functionality into the CMS to allow for populating a page with mock data

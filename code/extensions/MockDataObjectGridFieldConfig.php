@@ -1,5 +1,10 @@
 <?php
 
+namespace SilverStripe\MockDataObjects;
+
+use Extension;
+
+
 
 /**
  * Updates a {@link GridFieldConfig} object to contain functionality for adding mock data
