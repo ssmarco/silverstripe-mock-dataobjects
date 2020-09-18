@@ -2,42 +2,42 @@
 Name: mockdataobjects
 ---
 
-DataObject:
+SilverStripe\ORM\DataObject:
   extensions:
-    - MockDataObject
+    - SilverStripe\MockDataObjects\MockDataObject
 
-DBField:
+SilverStripe\ORM\FieldType\DBField:
   extensions:
-    - MockDBField
-MockDBField:
+    - SilverStripe\MockDataObjects\MockDBField
+SilverStripe\MockDataObjects\MockDBField:
   default_lang: en
 
-MockDataObject:
+SilverStripe\MockDataObjects\MockDataObject:
   fill_options:
     include_relations: true
     download_images: true
     only_empty: true
   relation_create_limit: 5
 
-Member:
+SilverStripe\Security\Member:
   mock_blacklist:
     - PasswordEncryption
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - MockDataSiteTree
-CMSMain:
+    - SilverStripe\MockDataObjects\MockDataSiteTree
+SilverStripe\CMS\Controllers\CMSMain:
   extensions:
-    - MockDataCMS
-GridFieldConfig_RecordEditor:
+    - SilverStripe\MockDataObjectsMockDataCMS
+SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor:
   extensions:
-    - MockDataObjectGridFieldConfig
+    - SilverStripe\MockDataObjects\MockDataObjectGridFieldConfig
 ---
 Name: gridfieldbuttons
 Before: betterbuttons
 ---
-GridFieldDetailForm_ItemRequest:
+SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
   extensions:
-    - MockDataGridFieldItemRequest
-LeftAndMain:
-  extra_requirements_javascript:
-    - silverstripe-mock-dataobjects/javascript/mock_dataobjects.js
+    - SilverStripe\MockDataObjects\MockDataGridFieldItemRequest
+# LeftAndMain:
+#   extra_requirements_javascript:
+#     - silverstripe-mock-dataobjects/javascript/mock_dataobjects.js
