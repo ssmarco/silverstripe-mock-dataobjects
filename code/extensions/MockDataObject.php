@@ -230,8 +230,8 @@ class MockDataObject extends DataExtension
 
         if ($settings['include_relations']) {
             $SNG = Injector::inst()->get(SiteTree::class);
-            $skip = array_merge(array_keys($SNG->has_many()), array_keys($SNG->many_many()));
-            foreach ($this->owner->has_many() as $relation => $className) {
+            $skip = array_merge(array_keys($SNG->hasMany()), array_keys($SNG->manyMany()));
+            foreach ($this->owner->hasMany() as $relation => $className) {
                 if (in_array($relation, $skip)) {
                     continue;
                 }
@@ -239,7 +239,7 @@ class MockDataObject extends DataExtension
                 if (!$idField) {
                     continue;
                 }
-                $idField . ="ID";
+                $idField = "ID";
 
                 $count = rand(1, 10);
                 $i = 0;
@@ -252,7 +252,7 @@ class MockDataObject extends DataExtension
                 }
             }
 
-            foreach ($this->owner->many_many() as $relation => $className) {
+            foreach ($this->owner->manyMany() as $relation => $className) {
                 if (in_array($relation, $skip)) {
                     continue;
                 }
