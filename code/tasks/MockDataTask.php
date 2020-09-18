@@ -117,7 +117,7 @@ class MockDataTask extends BuildTask
         try {
             $builder->$cmd();
         } catch (\Exception $e) {
-            echo $e->getMessage()."\n\n";
+            echo $e->getMessage() . "\n\n";
             die();
         }
     }

@@ -18,7 +18,7 @@ class MockDataLog extends DataObject
         'RecordID' => 'Int'
     );
 
-
+    private static $table_name = "MockDataLog";
 
     private static $indexes = array(
         'RecordClass' => true,
