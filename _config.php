@@ -10,9 +10,7 @@ if (!class_exists("Faker\Generator")) {
 
 define('MOCK_DATAOBJECTS_DIR', basename(dirname(__FILE__)));
 
-DBField::add_extension('MockDBField');
-
-foreach (ClassLoader::instance()->getManifest()->getDescendants(DBField::class) as $class) {
+foreach (ClassLoader::inst()->getManifest()->getDescendants(DBField::class) as $class) {
     $mockClass = "Mock{$class}Field";
     if (class_exists($mockClass)) {
         $class::add_extension($mockClass);

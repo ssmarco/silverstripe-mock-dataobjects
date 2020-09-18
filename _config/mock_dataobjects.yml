@@ -27,7 +27,7 @@ SilverStripe\CMS\Model\SiteTree:
     - SilverStripe\MockDataObjects\MockDataSiteTree
 SilverStripe\CMS\Controllers\CMSMain:
   extensions:
-    - SilverStripe\MockDataObjectsMockDataCMS
+    - SilverStripe\MockDataObjects\MockDataCMS
 SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor:
   extensions:
     - SilverStripe\MockDataObjects\MockDataObjectGridFieldConfig
