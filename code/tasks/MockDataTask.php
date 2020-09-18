@@ -100,7 +100,7 @@ class MockDataTask extends BuildTask
         $parentField = $this->request->getVar('parentField') ?: "ParentID";
 
         try {
-            $builder = MockDataBuilder::create($className);
+            $builder = new MockDataBuilder($className);
         } catch (\Exception $e) {
             echo $e->getMessage();
             die();
@@ -152,7 +152,7 @@ class MockDataTask extends BuildTask
      */
     protected function showError($msg)
     {
-        echo $msg."\n\n";
+        echo $msg . "\n\n";
         die();
     }
 
@@ -166,6 +166,6 @@ class MockDataTask extends BuildTask
      */
     protected function writeOut($msg)
     {
-        echo $msg."\n";
+        echo $msg . "\n";
     }
 }

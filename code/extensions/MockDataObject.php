@@ -159,20 +159,21 @@ class MockDataObject extends DataExtension
      */
     public function fill($config = array())
     {
-        $faker = Faker\Factory::create(i18n::get_locale());
+        $faker = \Faker\Factory::create(i18n::get_locale());
         $defaults = Config::inst()->get(MockDataObject::class, "fill_options");
         $create_limit = Config::inst()->get(MockDataObject::class, "relation_create_limit");
         $settings = array_merge($defaults, $config);
 
         // Anything that is a core SiteTree field, e.g. "URLSegment", "ShowInMenus", "ParentID",  we don't care about.
-        $omit = Injector::inst()->get(SiteTree::class)->db();
+        $omit = Config::inst()->get(SiteTree::class, 'db');
+
         $omit = array_merge($omit, $this->owner->config()->mock_blacklist);
 
         // Except these two.
         unset($omit['Title']);
         unset($omit['Content']);
 
-        $db = $this->owner->db();
+        $db = Config::inst()->get($this->owner->ClassName, 'db');
 
         foreach ($db as $fieldName => $fieldType) {
             if (in_array($fieldName, $omit)) {
@@ -186,8 +187,8 @@ class MockDataObject extends DataExtension
         }
 
 
-        foreach ($this->owner->has_one() as $relation => $className) {
-            $idField = $relation."ID";
+        foreach ($this->owner->hasOne() as $relation => $className) {
+            $idField = $relation . "ID";
             $sitetree = ($className == SiteTree::class) || (is_subclass_of($className, SiteTree::class));
             if ($sitetree && $relation == "Parent") {
                 continue;
@@ -238,7 +239,7 @@ class MockDataObject extends DataExtension
                 if (!$idField) {
                     continue;
                 }
-                $idField.="ID";
+                $idField . ="ID";
 
                 $count = rand(1, 10);
                 $i = 0;

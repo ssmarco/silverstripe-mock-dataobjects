@@ -10,11 +10,5 @@ if (!class_exists("Faker\Generator")) {
 
 define('MOCK_DATAOBJECTS_DIR', basename(dirname(__FILE__)));
 
-foreach (ClassLoader::inst()->getManifest()->getDescendants(DBField::class) as $class) {
-    $mockClass = "Mock{$class}Field";
-    if (class_exists($mockClass)) {
-        $class::add_extension($mockClass);
-    }
-}
 
-CMSMenu::remove_menu_item('MockChildrenController');
+CMSMenu::remove_menu_class(SilverStripe\MockDataObjects\MockChildrenController::class);

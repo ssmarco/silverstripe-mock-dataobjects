@@ -98,6 +98,13 @@ Add new records to the has_many relation on a given page.
 ```
 mockdata generate StaffMember -parent-field StaffPageID -parent "our-staff"
 ```
+### From /dev/tasks
+http://localhost/dev/tasks/SilverStripe-MockDataObjects-MockDataTask?args[0]=generate&args[1]=Page&parent=6
+
+args[0] = generate|update|cleanup
+ars[1] =  Classname; Page;
+&parent = parentID|URLSegment
+&count = 10
 
 ## Localisation
 

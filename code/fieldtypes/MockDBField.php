@@ -54,14 +54,14 @@ class MockDBField extends DataExtension
     {
         $list = false;
         $current_locale = i18n::get_locale();
-        $default_lang = Config::inst()->forClass(MockDBField::class)->default_lang;
-        $default_locale = i18n::get_locale_from_lang($default_lang);
+        $default_lang = Config::inst()->get(MockDBField::class, 'default_lang');
+        $default_locale = i18n::get_closest_translation($default_lang);
 
         i18n::set_locale($default_locale);
-        $core_list = _t('MockDataObject.'.$name);
+        $core_list = _t('MockDataObject.' . $name);
 
         i18n::set_locale($current_locale);
-        $user_list = _t('MockDataObject.'.$name);
+        $user_list = _t('MockDataObject.' . $name);
 
         $list = $user_list ?: $core_list;
 
@@ -70,7 +70,7 @@ class MockDBField extends DataExtension
             $fieldName = $this->owner->getName();
             foreach ($candidates as $c) {
                 $c = trim($c);
-                if (preg_match('/^'.$c.'[A-Z0-9]*/', $fieldName) || preg_match('/'.$c.'$/', $fieldName)) {
+                if (preg_match('/^' . $c . '[A-Z0-9]*/', $fieldName) || preg_match('/' . $c . '$/', $fieldName)) {
                     return true;
                 }
             }

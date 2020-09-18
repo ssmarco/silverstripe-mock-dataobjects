@@ -12,6 +12,66 @@ SilverStripe\ORM\FieldType\DBField:
 SilverStripe\MockDataObjects\MockDBField:
   default_lang: en
 
+SilverStripe\ORM\FieldType\DBBoolean:
+  extensions:
+    - SilverStripe\MockDataObjects\MockBooleanField
+
+SilverStripe\ORM\FieldType\DBCurrency:
+  extensions:
+    - SilverStripe\MockDataObjects\MockCurrencyField
+
+SilverStripe\ORM\FieldType\DBDate:
+  extensions:
+    - SilverStripe\MockDataObjects\MockDateField
+
+SilverStripe\ORM\FieldType\DBDatetime:
+  extensions:
+    - SilverStripe\MockDataObjects\MockDatetimeField
+
+SilverStripe\ORM\FieldType\DBDecimal:
+  extensions:
+    - SilverStripe\MockDataObjects\MockDecimalField
+
+SilverStripe\ORM\FieldType\DBDouble:
+  extensions:
+    - SilverStripe\MockDataObjects\MockDoubleField
+
+SilverStripe\ORM\FieldType\DBFloat:
+  extensions:
+    - SilverStripe\MockDataObjects\MockFloatField
+
+SilverStripe\ORM\FieldType\DBHTMLText:
+  extensions:
+    - SilverStripe\MockDataObjects\MockHTMLTextField
+
+SilverStripe\ORM\FieldType\DBHTMLVarchar:
+  extensions:
+    - SilverStripe\MockDataObjects\MockHTMLVarcharField
+
+SilverStripe\ORM\FieldType\DBInt:
+  extensions:
+    - SilverStripe\MockDataObjects\MockIntField
+
+SilverStripe\ORM\FieldType\DBPercentage:
+  extensions:
+    - SilverStripe\MockDataObjects\MockPercentageField
+
+SilverStripe\ORM\FieldType\DBText:
+  extensions:
+    - SilverStripe\MockDataObjects\MockTextField
+
+SilverStripe\ORM\FieldType\DBTime:
+  extensions:
+    - SilverStripe\MockDataObjects\MockTimeField
+
+SilverStripe\ORM\FieldType\DBVarchar:
+  extensions:
+    - SilverStripe\MockDataObjects\MockVarcharField
+
+SilverStripe\ORM\FieldType\DBYear:
+  extensions:
+    - SilverStripe\MockDataObjects\MockYearField
+
 SilverStripe\MockDataObjects\MockDataObject:
   fill_options:
     include_relations: true
