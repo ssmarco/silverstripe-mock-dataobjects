@@ -33,8 +33,8 @@ class MockDataGenerator implements GridField_HTMLProvider, GridField_DataManipul
      */
     public function getHTMLFragments($gridField)
     {
-        Requirements::javascript(MOCK_DATAOBJECTS_DIR.'/javascript/mock_dataobjects.js');
-        Requirements::css(MOCK_DATAOBJECTS_DIR.'/css/mock_dataobjects.css');
+        Requirements::javascript('unclecheese/mock-dataobjects: javascript/mock_dataobjects.js');
+        Requirements::css('unclecheese/mock-dataobjects: css/mock_dataobjects.css');
 
         $forTemplate = new ArrayData(array());
         $forTemplate->Colspan = count($gridField->getColumns());
