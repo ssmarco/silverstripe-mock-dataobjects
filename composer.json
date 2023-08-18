@@ -13,12 +13,18 @@
     "require":
     {
         "silverstripe/vendor-plugin": "^1",
-        "silverstripe/framework": "~4.1",
-        "silverstripe/cms": "~4.1",
-        "fzaninotto/faker": "1.1.*@dev"
+        "silverstripe/framework": "^4.13|~5",
+        "silverstripe/cms": "^4.13|~5",
+        "fakerphp/faker": "^1.23"
 
     },
     "replace": {
         "silverstripe/mock-dataobjects": "*"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
     }
 }
